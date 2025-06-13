@@ -41,20 +41,14 @@ A simple and responsive ToDo List application built with React. Users can add, e
 - ⏰ Due date and reminder functionality
 - 📄 Pagination for large task lists
 
----
-
-## 📁 Project Structure
-
----
-
 ## 🛠️ Installation & Setup
 
 1. **Clone the repository**
    ```bash
    git clone https://github.com/your-username/your-repo-name.git
    cd your-repo-name/frontend
-````
-
+   ```
+   
 2. **Install dependencies**
 
    ```bash
@@ -70,30 +64,3 @@ A simple and responsive ToDo List application built with React. Users can add, e
 4. **Open the app in your browser**
    Visit `http://localhost:3000`
 
----
-
-## 📷 Screenshots *(optional section)*
-
-> Include screenshots/gifs here showing each feature.
-
----
-
-## 🧑‍💻 Tech Stack
-
-* **Frontend**: React (with `create-react-app`)
-* **State Management**: React Hooks (useState, useEffect)
-* **Styling**: CSS / Styled Components / Tailwind (if used)
-
----
-
-## 🤝 Contributing
-
-Pull requests are welcome. For major changes, please open an issue first to discuss what you’d like to change.
-
----
-
-## 📄 License
-
-This project is open-source and available under the [MIT License](LICENSE).
-
----
