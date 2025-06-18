@@ -49,6 +49,11 @@ h1 {
   background-color: #45a049;
 }
 
+.todo-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
 .todo-item {
   display: flex;
   align-items: center;
@@ -92,4 +97,19 @@ h1 {
 .delete-button {
   background-color: #f44336;
   color: white;
+}
+
+.loading, .empty-list {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+}
+
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
 }
