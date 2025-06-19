@@ -57,46 +57,174 @@ h1 {
 .todo-item {
   display: flex;
   align-items: center;
-  padding: 10px;
+  justify-content: space-between;
+  padding: 12px;
   border-bottom: 1px solid #eee;
+  transition: background-color 0.2s ease;
+}
+
+.todo-item.hovered {
+  background-color: #f8f8f8;
+}
+
+.todo-content {
+  display: flex;
+  align-items: center;
   gap: 10px;
-}
-
-.todo-checkbox {
-  width: 20px;
-  height: 20px;
-}
-
-.todo-text {
   flex: 1;
-  text-align: left;
-}
-
-.todo-text.completed {
-  text-decoration: line-through;
-  color: #888;
 }
 
 .todo-actions {
+  opacity: 0;
+  transition: opacity 0.2s ease;
   display: flex;
-  gap: 5px;
+  gap: 8px;
 }
 
-.edit-button, .delete-button {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 4px;
+.todo-actions.visible {
+  opacity: 1;
+}
+
+.todo-checkbox {
+  width: 18px;
+  height: 18px;
   cursor: pointer;
 }
 
+.edit-button, .delete-button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
 .edit-button {
-  background-color: #2196F3;
-  color: white;
+    background-color: #2196F3;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #1976D2;
+    transform: scale(1.05);
 }
 
 .delete-button {
-  background-color: #f44336;
-  color: white;
+    background-color: #FF5252;
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #D32F2F;
+    transform: scale(1.05);
+}
+
+.button-text {
+    font-size: 14px;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease;
+}
+
+.modal-content {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    animation: slideIn 0.3s ease;
+}
+
+.modal-title {
+    margin: 0 0 16px 0;
+    color: #1a1a1a;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.modal-message {
+    color: #666;
+    margin: 0 0 24px 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.modal-button-secondary, .modal-button-danger {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.modal-button-secondary {
+    background-color: #f0f0f0;
+    color: #666;
+}
+
+.modal-button-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+.modal-button-danger {
+    background-color: #FF5252;
+    color: white;
+}
+
+.modal-button-danger:hover {
+    background-color: #D32F2F;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animation for completing todos */
+.todo-text {
+    transition: all 0.3s ease;
+}
+
+.todo-text.completed {
+    text-decoration: line-through;
+    color: #888;
+    font-style: italic;
 }
 
 .loading, .empty-list {
@@ -112,4 +240,48 @@ h1 {
   border-radius: 4px;
   margin-bottom: 20px;
   text-align: center;
+}
+
+.todo-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.todo-stats {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #4CAF50;
+    transition: width 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .todo-actions {
+        opacity: 1;
+    }
+    
+    .button-text {
+        display: none;
+    }
+    
+    .edit-button, .delete-button {
+        padding: 8px;
+    }
 }
