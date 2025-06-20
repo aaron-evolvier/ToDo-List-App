@@ -67,6 +67,12 @@ h1 {
   background-color: #f8f8f8;
 }
 
+.todo-item.editing {
+  background-color: #f8f9fa;
+  padding: 12px;
+  border-radius: 8px;
+}
+
 .todo-content {
   display: flex;
   align-items: center;
@@ -284,4 +290,63 @@ h1 {
     .edit-button, .delete-button {
         padding: 8px;
     }
+}
+
+.edit-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+}
+
+.edit-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 2px solid #2196F3;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.edit-input:focus {
+    outline: none;
+    border-color: #1976D2;
+}
+
+.edit-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.edit-button-secondary, .edit-button-primary {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.edit-button-secondary {
+    background-color: #e0e0e0;
+    color: #666;
+}
+
+.edit-button-secondary:hover {
+    background-color: #d5d5d5;
+}
+
+.edit-button-primary {
+    background-color: #2196F3;
+    color: white;
+}
+
+.edit-button-primary:hover {
+    background-color: #1976D2;
+}
+
+.todo-item .edit-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.7;
 }

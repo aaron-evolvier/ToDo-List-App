@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 
-const TodoList = ({ todos, onDelete, onToggle }) => {
+const TodoList = ({ todos, onDelete, onToggle, onUpdate }) => {
     const completedTodos = todos.filter(todo => todo.completed).length;
     const totalTodos = todos.length;
 
@@ -29,13 +29,13 @@ const TodoList = ({ todos, onDelete, onToggle }) => {
                 </div>
             </div>
             <div className="todo-list">
-                {todos.map((todo) => (
-                    <TodoItem 
-                        key={todo._id} 
-                        todo={todo} 
-                        onDelete={onDelete}
-                        onToggle={onToggle}
-                    />
+                {todos.map((todo) => (                <TodoItem 
+                    key={todo._id} 
+                    todo={todo} 
+                    onDelete={onDelete}
+                    onToggle={onToggle}
+                    onUpdate={onUpdate}
+                />
                 ))}
             </div>
         </div>

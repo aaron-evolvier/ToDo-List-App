@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import DeleteConfirmation from './DeleteConfirmation';
+import EditForm from './EditForm';
 
-const TodoItem = ({ todo, onDelete, onToggle }) => {
+const TodoItem = ({ todo, onDelete, onToggle, onUpdate }) => {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
 
     const handleDelete = () => {
@@ -13,6 +15,31 @@ const TodoItem = ({ todo, onDelete, onToggle }) => {
         onDelete(todo._id);
         setShowDeleteModal(false);
     };
+
+    const handleEdit = () => {
+        setIsEditing(true);
+    };
+
+    const handleSave = (newText) => {
+        onUpdate(todo._id, { text: newText });
+        setIsEditing(false);
+    };
+
+    const handleCancel = () => {
+        setIsEditing(false);
+    };
+
+    if (isEditing) {
+        return (
+            <div className="todo-item editing">
+                <EditForm 
+                    todo={todo}
+                    onSave={handleSave}
+                    onCancel={handleCancel}
+                />
+            </div>
+        );
+    }
 
     return (
         <>
@@ -33,7 +60,11 @@ const TodoItem = ({ todo, onDelete, onToggle }) => {
                     </span>
                 </div>
                 <div className={`todo-actions ${isHovered ? 'visible' : ''}`}>
-                    <button className="edit-button">
+                    <button 
+                        className="edit-button"
+                        onClick={handleEdit}
+                        disabled={todo.completed}
+                    >
                         <span className="button-text">Edit</span>
                     </button>
                     <button 
@@ -43,7 +74,8 @@ const TodoItem = ({ todo, onDelete, onToggle }) => {
                         <span className="button-text">Delete</span>
                     </button>
                 </div>
-            </div>            <DeleteConfirmation
+            </div>
+            <DeleteConfirmation
                 isOpen={showDeleteModal}
                 onClose={() => setShowDeleteModal(false)}
                 onConfirm={confirmDelete}

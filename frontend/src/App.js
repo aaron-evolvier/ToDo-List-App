@@ -56,6 +56,16 @@ function App() {
     }
   };
 
+  const updateTodo = async (id, updates) => {
+    try {
+      const updatedTodo = await api.updateTodo(id, updates);
+      setTodos(todos.map(t => t._id === id ? updatedTodo : t));
+      setError(null);
+    } catch (err) {
+      setError('Failed to update todo');
+    }
+  };
+
   return (
     <div className="App">
       <div className="todo-container">
@@ -69,6 +79,7 @@ function App() {
             todos={todos} 
             onDelete={deleteTodo}
             onToggle={toggleTodo}
+            onUpdate={updateTodo}
           />
         )}
       </div>
