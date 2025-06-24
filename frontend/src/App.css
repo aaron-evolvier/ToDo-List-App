@@ -13,6 +13,40 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  transition: box-shadow 0.3s, background 0.3s;
+}
+
+@media (max-width: 900px) {
+  .todo-container {
+    max-width: 90vw;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .todo-container {
+    max-width: 100vw;
+    padding: 5px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .filter-bar {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+  .todo-list-container {
+    gap: 10px;
+  }
+  .todo-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .todo-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
 }
 
 h1 {
@@ -33,6 +67,12 @@ h1 {
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.todo-input:focus {
+  outline: 2px solid #2196F3;
+  background: #e3f2fd;
 }
 
 .todo-button {
@@ -60,7 +100,11 @@ h1 {
   justify-content: space-between;
   padding: 12px;
   border-bottom: 1px solid #eee;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  background: #fff;
 }
 
 .todo-item.hovered {
@@ -68,9 +112,15 @@ h1 {
 }
 
 .todo-item.editing {
-  background-color: #f8f9fa;
+  background-color: #f0f7ff;
   padding: 12px;
   border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.08);
+}
+
+.todo-item:hover {
+  background: #f5faff;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.10);
 }
 
 .todo-content {
@@ -394,4 +444,31 @@ h1 {
     background-color: #ccc;
     cursor: not-allowed;
     opacity: 0.7;
+}
+
+.todo-list {
+  animation: fadeInList 0.4s;
+}
+
+@keyframes fadeInList {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.todo-item {
+  animation: fadeInItem 0.3s;
+}
+
+@keyframes fadeInItem {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #f0f0f0;
+}
+::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+  border-radius: 4px;
 }
