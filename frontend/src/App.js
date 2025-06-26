@@ -9,6 +9,14 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [filter, setFilter] = useState('all');
+  const [dark, setDark] = useState(() => {
+    return localStorage.getItem('darkMode') === 'true';
+  });
+
+  useEffect(() => {
+    document.body.classList.toggle('dark', dark);
+    localStorage.setItem('darkMode', dark);
+  }, [dark]);
 
   useEffect(() => {
     loadTodos();
@@ -87,6 +95,13 @@ function App() {
 
   return (
     <div className="App">
+      <button
+        className="dark-toggle"
+        onClick={() => setDark(d => !d)}
+        aria-label="Toggle dark mode"
+      >
+        {dark ? 'Light Mode' : 'Dark Mode'}
+      </button>
       <div className="todo-container">
         <h1>Todo List</h1>
         {error && <div className="error-message">{error}</div>}
