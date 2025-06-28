@@ -1,4 +1,4 @@
-# 📝 React & Node.js ToDo List App
+# 📝 React & Node.js ToDo List App (Ver 1.0)
 
 A full-stack ToDo List application with a React frontend and Node.js/Express backend, using MongoDB for persistent storage. Users can add, edit, delete, and filter tasks with a clean, responsive UI and smooth user interactions.
 
